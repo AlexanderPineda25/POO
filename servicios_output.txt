@@ -1,0 +1,15 @@
+### Resultados de los Servicios ###
+Persona en posición 2: Persona{ID=3.0, nombre='Carlos', apellidos='Rodríguez', email='carlos.rodriguez@email.com'}
+Cantidad actual de registros: 10
+Listado de elementos:
+
+Persona: Persona{ID=1.0, nombre='Juan', apellidos='Pérez', email='juan.perez@email.com'}
+Persona: Persona{ID=2.0, nombre='María', apellidos='Gómez', email='maria.gomez@email.com'}
+Persona: Persona{ID=3.0, nombre='Carlos', apellidos='Rodríguez', email='carlos.rodriguez@email.com'}
+Persona: Persona{ID=4.0, nombre='Ana', apellidos='Martínez', email='ana.martinez@email.com'}
+Persona: Persona{ID=5.0, nombre='Luis', apellidos='Fernández', email='luis.fernandez@email.com'}
+Persona: Persona{ID=6.0, nombre='Sofía', apellidos='Ramírez', email='sofia.ramirez@email.com'}
+Persona: Persona{ID=7.0, nombre='Diego', apellidos='Torres', email='diego.torres@email.com'}
+Persona: Persona{ID=8.0, nombre='Elena', apellidos='Díaz', email='elena.diaz@email.com'}
+Persona: Persona{ID=9.0, nombre='Ricardo', apellidos='Mendoza', email='ricardo.mendoza@email.com'}
+Persona: Persona{ID=10.0, nombre='Gabriela', apellidos='Ortiz', email='gabriela.ortiz@email.com'}
