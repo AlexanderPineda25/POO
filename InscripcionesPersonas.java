@@ -1,61 +1,74 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InscripcionesPersonas {
-    private final List<Persona> listado;
+    List<Persona> listaInscripcion = new ArrayList<>();
 
-    public InscripcionesPersonas() {
-        this.listado = new ArrayList<>();
-        guardarInformacion(); // Se llena la lista automáticamente
+    public InscripcionesPersonas(List<Persona> listaInscripcion){
+        this.listaInscripcion = listaInscripcion;
     }
 
-    public void inscribir(Persona persona) {
-        listado.add(persona);
-    }
 
-    public void eliminar(Persona persona) {
-        listado.remove(persona);
-    }
+    public void leerDesdeArchivo(String datos) {
+        try (BufferedReader br = new BufferedReader(new FileReader(datos))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                String[] dat = linea.split(",");
+                if (dat.length == 4) {
+                    double ID = Integer.parseInt(dat[0]);
+                    String nombre = dat[1];
+                    String apellidos = dat[2];
+                    String email = dat[3];
 
-    public void actualizar(Persona persona) {
-        for (int i = 0; i < listado.size(); i++) {
-            if (listado.get(i).getID() == persona.getID()) {
-                listado.set(i, persona);
-                break;
+                    Persona persona = new Persona(ID, nombre, apellidos, email);
+                    listaInscripcion.add(persona);
+                }
             }
+            System.out.println("Datos cargados desde el archivo correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error en el formato del ID: " + e.getMessage());
         }
     }
 
-    private void guardarInformacion() {
-        listado.add(new Persona(1.0, "Juan", "Pérez", "juan.perez@email.com"));
-        listado.add(new Persona(2.0, "María", "Gómez", "maria.gomez@email.com"));
-        listado.add(new Persona(3.0, "Carlos", "Rodríguez", "carlos.rodriguez@email.com"));
-        listado.add(new Persona(4.0, "Ana", "Martínez", "ana.martinez@email.com"));
-        listado.add(new Persona(5.0, "Luis", "Fernández", "luis.fernandez@email.com"));
-        listado.add(new Persona(6.0, "Sofía", "Ramírez", "sofia.ramirez@email.com"));
-        listado.add(new Persona(7.0, "Diego", "Torres", "diego.torres@email.com"));
-        listado.add(new Persona(8.0, "Elena", "Díaz", "elena.diaz@email.com"));
-        listado.add(new Persona(9.0, "Ricardo", "Mendoza", "ricardo.mendoza@email.com"));
-        listado.add(new Persona(10.0, "Gabriela", "Ortiz", "gabriela.ortiz@email.com"));
+    public void inscribir(double id, String nombre, String Apellidos, String email){
+        Persona nuevaPersona = new Persona(id, nombre, Apellidos, email);
+        listaInscripcion.add(nuevaPersona);
+        System.out.println("Persona inscrita: " + nuevaPersona);
     }
 
-    public void cargarDatos() {
-        System.out.println("Datos de personas cargados.");
+    public void actualizar(int id, String nuevoNombre, String nuevoApellido, String nuevoEmail){
+        for (Persona p1 : listaInscripcion) {
+            if (p1.getID() == id) {
+                p1.setNombre(nuevoNombre);
+                p1.setApellidos(nuevoApellido);
+                p1.setEmail(nuevoEmail);
+                System.out.println("Persona actualizada: " + p1);
+                return;
+            }
+        }
+        System.out.println("Persona con ID " + id + " no encontrada.");
     }
 
-    public List<Persona> getListado() {
-        return listado;
+    public void eliminar(int id) {
+        listaInscripcion.removeIf(p -> p.getID() == id);
+        System.out.println("Persona con ID " + id + " eliminada (si existía).");
     }
+
+    public void guardarInformacion(String archivo) {
+        try (FileWriter fw = new FileWriter(archivo)) {
+            for (Persona p : listaInscripcion) {
+                fw.write(p.getID() + "," + p.getNombre() + "," + p.getApellidos() + "," + p.getEmail() + "\n");
+            }
+            System.out.println("Datos guardados correctamente en " + archivo);
+        } catch (IOException e) {
+            System.out.println("Error al guardar los datos: " + e.getMessage());
+        }
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-

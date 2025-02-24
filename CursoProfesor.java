@@ -1,14 +1,14 @@
 public class CursoProfesor {
-    private Profesor profesor;
-    private int anio;
-    private int semestre;
-    private Curso curso; 
+    Profesor profesor;
+    Curso curso;
+    int año, semestre;
 
-    public CursoProfesor(Profesor profesor, int anio, int semestre, Curso curso) {
-        this.profesor = profesor;
-        this.anio = anio;
-        this.semestre = semestre;
-        this.curso = curso;
+    public String toString(){
+        return "Profesor: "+profesor+"\naño: "+año+"\nsemestre: "+semestre+"\ncurso: "+curso;
+    }
+
+    public String getCursoProfesor(){
+        return this.toString();
     }
 
     public Profesor getProfesor() {
@@ -19,12 +19,20 @@ public class CursoProfesor {
         this.profesor = profesor;
     }
 
-    public int getAnio() {
-        return anio;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setAnio(int anio) {
-        this.anio = anio;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
+    public int getAño() {
+        return año;
+    }
+
+    public void setAño(int año) {
+        this.año = año;
     }
 
     public int getSemestre() {
@@ -35,21 +43,4 @@ public class CursoProfesor {
         this.semestre = semestre;
     }
 
-    public Curso getCurso() {
-        return curso;
-    }
-
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
-
-    @Override
-    public String toString() {
-        return "CursoProfesor{" +
-                "profesor=" + profesor.getNombre() + " " + profesor.getApellidos() +
-                ", anio=" + anio +
-                ", semestre=" + semestre +
-                ", curso=" + curso.getId() +
-                '}';
-    }
 }

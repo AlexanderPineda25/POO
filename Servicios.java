@@ -1,7 +1,8 @@
+
 import java.util.List;
 
-interface Servicios {
+public interface Servicios {
     String imprimirPosicion(int posicion);
-    int cantidadActual();
+    Integer cantidadActual();
     List<String> imprimirListado();
 }

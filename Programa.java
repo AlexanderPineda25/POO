@@ -1,16 +1,23 @@
 public class Programa {
-    private double id;
-    private String nombre;
-    private double duracion;
-    private String registro;
-    private Facultad facultad;
+    double id, duracion;
+    String nombre, registro;
+    Facultad facultad;
 
-    public Programa(double id, String nombre, double duracion, String registro, Facultad facultad) {
+    public Programa(double id, double duracion, String nombre, String registro, Facultad facultad){
         this.id = id;
-        this.nombre = nombre;
         this.duracion = duracion;
+        this.nombre = nombre;
         this.registro = registro;
         this.facultad = facultad;
+    }
+
+    @Override
+    public String toString(){
+        return "id: "+id+"\nduracion: "+duracion+"\nnombre: "+nombre+"\nregistro: "+registro+ "\nFacultad: "+facultad;
+    }
+
+    public String getPrograma(){
+        return this.toString();
     }
 
     public double getId() {
@@ -21,20 +28,20 @@ public class Programa {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public double getDuracion() {
         return duracion;
     }
 
     public void setDuracion(double duracion) {
         this.duracion = duracion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getRegistro() {
@@ -53,14 +60,4 @@ public class Programa {
         this.facultad = facultad;
     }
 
-    @Override
-    public String toString() {
-        return "Programa{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", duracion=" + duracion +
-                ", registro='" + registro + '\'' +
-                ", facultad=" + facultad.getNombre() +
-                '}';
-    }
 }
