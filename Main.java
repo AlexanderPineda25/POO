@@ -11,7 +11,7 @@ public class Main {
 
         // Escribir en un archivo
         try (FileWriter writer = new FileWriter("servicios_output.txt")) {
-            writer.write("### Resultados de los Servicios PRUEBAAAAAAAAAAAAAAAA DOOOOOOOOOOOSSSSSSSSSSSSSSSSSS ###\n");
+            writer.write("### Resultados de los Servicios PRUEBAAAAAAAAAAAAAAAA DOOOOOOOOOOOSSSSSSSSSSSSSSSSSS TRREESSSSSSSSSSSSSSSSSSSSSSSS ###\n");
             writer.write(servicios.imprimirPosicion(2) + "\n");
             writer.write("Cantidad actual de registros: " + servicios.cantidadActual() + "\n");
             writer.write("Listado de elementos:\n\n");
