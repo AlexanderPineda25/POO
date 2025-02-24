@@ -11,7 +11,7 @@ public class Main {
         CursosProfesores cursosProfesores = new CursosProfesores();
 
         while (true) {
-            System.out.println("\n--- MENÚ PRINCIPAL ---");
+            System.out.println("\n--- MENÚ ---");
             System.out.println("1. Gestión de Personas");
             System.out.println("2. Gestión de Cursos");
             System.out.println("3. Salir");
