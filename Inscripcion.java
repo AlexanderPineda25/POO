@@ -1,14 +1,26 @@
 public class Inscripcion {
-    private Curso curso;
-    private int anio;
-    private int semestre;
-    private Estudiante estudiante;
+    Curso curso;
+    int anio, semestre;
+    Estudiante estudiante;
 
-    public Inscripcion(Curso curso, int anio, int semestre, Estudiante estudiante) {
+    public Inscripcion(Curso curso, int anio, int semestre, Estudiante estudiante){
         this.curso = curso;
         this.anio = anio;
         this.semestre = semestre;
         this.estudiante = estudiante;
+    }
+
+    @Override
+    public String toString() {
+        return "Curso: " + curso.getNombre() +
+                "\nAño: " + anio +
+                "\nSemestre: " + semestre +
+                "\nEstudiante: " + estudiante.getNombre();
+    }
+
+    // Obtener toda la información de la inscripción
+    public String getInscripciones() {
+        return this.toString();
     }
 
     public Curso getCurso() {
@@ -44,13 +56,18 @@ public class Inscripcion {
     }
 
     @Override
-    public String toString() {
-        return "Inscripcion{" +
-                "curso=" + curso.getId() +
-                ", anio=" + anio +
-                ", semestre=" + semestre +
-                ", estudiante=" + estudiante.getCodigo() +
-                '}';
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Inscripcion that = (Inscripcion) obj;
+        return anio == that.anio &&
+                semestre == that.semestre &&
+                curso.equals(that.curso) &&
+                estudiante.equals(that.estudiante);
+    }
+
+    @Override
+    public int hashCode() {
+        return curso.hashCode() + Integer.hashCode(anio) + Integer.hashCode(semestre) + estudiante.hashCode();
     }
 }
-
